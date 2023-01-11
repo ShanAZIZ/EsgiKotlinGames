@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">EsgiGames</string>
+    <string name="app_name" translatable="false">EsgiGames</string>
+    <!-- LOGIN ACTIVITY -->
+    <string name="welcome">Welcome !</string>
+    <string name="login_message">Please login or create a new account to use the application</string>
+    <string name="email_field">E-Mail</string>
+    <string name="password_field">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="goto_signin">New account</string>
+    <string name="password_forgot">Forgot password</string>
+    <!-- LOGIN ACTIVITY -->
+
+
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- LOGIN ACTIVITY -->
+    <string name="welcome">Bienvenue !</string>
+    <string name="login_message">Veuillez vous conntecter ou créer un nouveau compte pour utiliser l\'application</string>
+    <string name="email_field">E-Mail</string>
+    <string name="password_field">Mot de passe</string>
+    <string name="login_btn">Se connecter</string>
+    <string name="goto_signin">Créer un nouveau compte</string>
+    <string name="password_forgot">Mot de passe oublé</string>
+    <!-- LOGIN ACTIVITY -->
+
+
+</resources>
