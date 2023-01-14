@@ -7,7 +7,7 @@
     <string name="password_field">Mot de passe</string>
     <string name="login_btn">Se connecter</string>
     <string name="goto_signin">Créer un nouveau compte</string>
-    <string name="password_forgot">Mot de passe oublé</string>
+    <string name="password_forgot"><u>Mot de passe oublé</u></string>
     <!-- LOGIN ACTIVITY -->
 
 

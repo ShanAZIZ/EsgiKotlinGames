@@ -7,7 +7,7 @@
     <string name="password_field">Password</string>
     <string name="login_btn">Login</string>
     <string name="goto_signin">New account</string>
-    <string name="password_forgot">Forgot password</string>
+    <string name="password_forgot"> <u>Forgot password</u></string>
     <!-- LOGIN ACTIVITY -->
 
 
