@@ -27,4 +27,8 @@
     <string name="forgot_password_btn">Renvoyer mon mot de passe</string>
     <!-- FORGOT PASSWORD ACTIVITY -->
 
+    <!-- HOME ACTIVITY -->
+    <string name="home">Accueil</string>
+    <!-- HOME ACTIVITY -->
+
 </resources>

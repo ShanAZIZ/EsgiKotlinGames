@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/bg_image"
-    android:backgroundTint="@color/background_grey"
+    android:backgroundTint="@color/field_background_grey"
     android:backgroundTintMode="multiply"
     tools:context=".LoginActivity">
 

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".HomeActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="10dp"
+        android:background="@color/background_color"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:fontFamily="@font/google_sans_bold"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:text="@string/home"/>
+
+            <View
+                android:id="@+id/toolbar_like"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+
+                android:layout_marginEnd="25dp"
+                app:layout_constraintEnd_toStartOf="@+id/toolbar_whishlist"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:background="@drawable/like"/>
+            <View
+                android:id="@+id/toolbar_whishlist"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="15dp"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:background="@drawable/whishlist"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
