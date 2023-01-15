@@ -20,4 +20,11 @@
     <string name="register_btn">Register</string>
     <!-- REGISTER ACTIVITY -->
 
+    <!-- FORGOT PASSWORD ACTIVITY -->
+    <string name="forgot_password">Forgot your password</string>
+    <string name="forgot_password_message">Please enter your email to reset your password</string>
+    <string name="email_field_forgot_password">E-Mail</string>
+    <string name="forgot_password_btn">Resend my password</string>
+    <!-- FORGOT PASSWORD ACTIVITY -->
+
 </resources>

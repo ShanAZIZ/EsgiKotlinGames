@@ -60,7 +60,7 @@
         android:layout_marginHorizontal="50dp"
         android:paddingTop="15dp"
         android:fontFamily="@font/google_sans_regular"
-        android:hint="@string/email_field"
+        android:hint="@string/email_field_register"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:textSize="15sp"
