@@ -10,5 +10,14 @@
     <string name="password_forgot"><u>Mot de passe oublé</u></string>
     <!-- LOGIN ACTIVITY -->
 
+    <!-- REGISTER ACTIVITY -->
+    <string name="register">Inscription</string>
+    <string name="register_message">Veuillez saisir ces differentes informations, afin que vos listes soient sauvegardées</string>
+    <string name="username_field">Nom d\'utilisateur</string>
+    <string name="email_field_register">E-Mail</string>
+    <string name="password_field_register">Mot de passe</string>
+    <string name="confirm_password_field">Vérification du mot de passe</string>
+    <string name="register_btn">S\'inscrire</string>
+    <!-- REGISTER ACTIVITY -->
 
 </resources>
