@@ -29,6 +29,8 @@
 
     <!-- HOME ACTIVITY -->
     <string name="home">Accueil</string>
+    <string name="search_message">Rechercher un jeu…</string>
+
     <!-- HOME ACTIVITY -->
 
 </resources>
