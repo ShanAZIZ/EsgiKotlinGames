@@ -30,7 +30,11 @@
     <!-- HOME ACTIVITY -->
     <string name="home">Accueil</string>
     <string name="search_message">Rechercher un jeu…</string>
-
     <!-- HOME ACTIVITY -->
 
+    <!-- LIKE ACTIVITY -->
+    <string name="likes">Mes J\'aimes</string>
+    <string name="no_likes_message">Vous n\'avez pas encore liker de contenu.</string>
+    <string name="click_message">Cliquez sur le coeur pour en rajouter.</string>
+    <!-- LIKE ACTIVITY -->
 </resources>

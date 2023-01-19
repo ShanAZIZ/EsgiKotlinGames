@@ -32,4 +32,10 @@
     <string name="search_message">Find a game…</string>
     <!-- HOME ACTIVITY -->
 
+    <!-- LIKE ACTIVITY -->
+    <string name="likes">Likes</string>
+    <string name="no_likes_message">You haven\'t liked any content yet.</string>
+    <string name="click_message">Click on the heart to add more.</string>
+    <!-- LIKE ACTIVITY -->
+
 </resources>
