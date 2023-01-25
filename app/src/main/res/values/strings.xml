@@ -3,6 +3,8 @@
     <!-- LOGIN ACTIVITY -->
     <string name="welcome">Welcome !</string>
     <string name="login_message">Please login or create a new account to use the application</string>
+    <string name="login_empty_string_error_message">Email or password field cannot be empty</string>
+    <string name="login_failed_message">Authentication failed, please check your credentials or network and try again</string>
     <string name="email_field">E-Mail</string>
     <string name="password_field">Password</string>
     <string name="login_btn">Login</string>

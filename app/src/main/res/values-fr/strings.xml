@@ -3,6 +3,8 @@
     <!-- LOGIN ACTIVITY -->
     <string name="welcome">Bienvenue !</string>
     <string name="login_message">Veuillez vous conntecter ou créer un nouveau compte pour utiliser l\'application</string>
+    <string name="login_empty_string_error_message">L\'email ou le mot de passe ne peuvent pas être vide</string>
+    <string name="login_failed_message">Echec de l\'authentification, veuillez vérifier vos identifiants et réessayer</string>
     <string name="email_field">E-Mail</string>
     <string name="password_field">Mot de passe</string>
     <string name="login_btn">Se connecter</string>
