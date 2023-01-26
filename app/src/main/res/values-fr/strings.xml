@@ -15,6 +15,8 @@
     <!-- REGISTER ACTIVITY -->
     <string name="register">Inscription</string>
     <string name="register_message">Veuillez saisir ces differentes informations, afin que vos listes soient sauvegardées</string>
+    <string name="password_mismatch">Les mots de passe ne correspondent pas, merci de réessayer</string>
+    <string name="register_empty_string_error_message">L\'email, le nom d\'utilisateur ou le mot de passe ne peuvent pas être vide</string>
     <string name="username_field">Nom d\'utilisateur</string>
     <string name="email_field_register">E-Mail</string>
     <string name="password_field_register">Mot de passe</string>
@@ -25,6 +27,8 @@
     <!-- FORGOT PASSWORD ACTIVITY -->
     <string name="forgot_password">Mot de passe oublié</string>
     <string name="forgot_password_message">Veuillez saisir votre email afin de reinitialiser votre mot de passe</string>
+    <string name="forgot_password_empty_email">L\'adresse email ne peut pas être vide</string>
+    <string name="forgot_error_message">Veuillez vérifier l\'adresse email ou votre connexion internet et réessayer</string>
     <string name="email_field_forgot_password">E-Mail</string>
     <string name="forgot_password_btn">Renvoyer mon mot de passe</string>
     <!-- FORGOT PASSWORD ACTIVITY -->

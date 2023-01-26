@@ -37,16 +37,17 @@ class LoginFragment : Fragment() {
 
         super.onViewCreated(view, savedInstanceState)
 
+        val email = view.findViewById<EditText>(R.id.email_edit_text)
+        val password = view.findViewById<EditText>(R.id.password_edit_text)
+
         val loginButton = view.findViewById<Button>(R.id.login_btn)
         val registerButton = view.findViewById<Button>(R.id.register_btn)
         val forgotPassword = view.findViewById<TextView>(R.id.password_forgot)
 
         // Login button on click
         loginButton.setOnClickListener {
-            val email = view.findViewById<EditText>(R.id.email_edit_text).text.toString()
-            val password = view.findViewById<EditText>(R.id.password_edit_text).text.toString()
             // Check if not empty
-            if (email.isEmpty() || password.isEmpty()) {
+            if (email.text.toString().isEmpty() || password.text.toString().isEmpty()) {
                 Toast.makeText(context, R.string.login_empty_string_error_message, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -63,13 +64,13 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun signIn(email :String, password: String) {
-        println(email)
-        println(password)
-        auth.signInWithEmailAndPassword(email, password)
+    private fun signIn(email :EditText, password: EditText) {
+        auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener(context as Activity) { task ->
                 if (task.isSuccessful) {
                     navController.navigate(R.id.action_loginFragment_to_homeFragment)
+                    email.text.clear()
+                    password.text.clear()
                 } else {
                     Toast.makeText(context, R.string.login_failed_message,
                         Toast.LENGTH_SHORT).show()

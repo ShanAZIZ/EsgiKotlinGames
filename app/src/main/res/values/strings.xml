@@ -15,6 +15,8 @@
     <!-- REGISTER ACTIVITY -->
     <string name="register">Registration</string>
     <string name="register_message">Please enter these different information, so that your lists are saved</string>
+    <string name="password_mismatch">Passwords are not matching, please try again</string>
+    <string name="register_empty_string_error_message">Email, username or password field cannot be empty</string>
     <string name="username_field">Username</string>
     <string name="email_field_register">E-Mail</string>
     <string name="password_field_register">Password</string>
@@ -25,6 +27,8 @@
     <!-- FORGOT PASSWORD ACTIVITY -->
     <string name="forgot_password">Forgot your password</string>
     <string name="forgot_password_message">Please enter your email to reset your password</string>
+    <string name="forgot_password_empty_email">Email field can\'t be empty</string>
+    <string name="forgot_error_message">Please check email address or internet connexion and try again</string>
     <string name="email_field_forgot_password">E-Mail</string>
     <string name="forgot_password_btn">Resend my password</string>
     <!-- FORGOT PASSWORD ACTIVITY -->

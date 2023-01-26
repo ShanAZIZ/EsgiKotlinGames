@@ -1,33 +1,26 @@
 package fr.esgi.games
 
+import android.app.Activity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [RegisterFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+// TODO: add credential validation and custom auth error message
 class RegisterFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var auth: FirebaseAuth
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,23 +30,57 @@ class RegisterFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegisterFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegisterFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val username = view.findViewById<EditText>(R.id.username_edit_text)
+        val email = view.findViewById<EditText>(R.id.email_edit_text)
+        val password = view.findViewById<EditText>(R.id.password_edit_text)
+        val confirmPassword = view.findViewById<EditText>(R.id.confirm_password_edit_text)
+
+        auth = Firebase.auth
+        navController = Navigation.findNavController(view)
+
+        val registerButton = view.findViewById<Button>(R.id.register_btn)
+
+        registerButton.setOnClickListener {
+
+            if (
+                email.text.toString().isEmpty() ||
+                username.text.toString().isEmpty() ||
+                password.text.toString().isEmpty())
+            {
+                Toast.makeText(context, R.string.register_empty_string_error_message, Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if(!isPasswordSame(password.text.toString(), confirmPassword.text.toString())) {
+                Toast.makeText(context, R.string.password_mismatch, Toast.LENGTH_SHORT).show()
+                confirmPassword.text.clear()
+                return@setOnClickListener
+            }
+            register(email, password, username)
+        }
+    }
+
+    private fun register(email: EditText, password: EditText, username: EditText) {
+        auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+            .addOnCompleteListener(context as Activity) { task ->
+                if (task.isSuccessful) {
+                    navController.navigate(R.id.action_registerFragment_to_homeFragment)
+                    email.text.clear()
+                    password.text.clear()
+                    username.text.clear()
+                } else {
+                    Toast.makeText(
+                        context, R.string.login_failed_message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+    }
+
+    private fun isPasswordSame(password: String, confirmPassword: String): Boolean {
+        return password == confirmPassword
     }
 }
