@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class HomeFragment : Fragment() {
+class LikeFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var navController: NavController
@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_like, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,11 +29,12 @@ class HomeFragment : Fragment() {
         auth = Firebase.auth
         navController = Navigation.findNavController(view)
 
-        val goToLikesButton = view.findViewById<View>(R.id.toolbar_like)
+        val exitButton = view.findViewById<View>(R.id.toolbar_cross)
 
-        goToLikesButton.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_likeFragment)
+        exitButton.setOnClickListener {
+            navController.navigate(R.id.action_likeFragment_to_homeFragment)
         }
-
     }
+
+
 }
