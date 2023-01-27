@@ -7,13 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-
+// TODO retrieve all datas - steam API
+// https://store.steampowered.com/api/appdetails?appids=730&l=french
+// https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/
+// https://store.steampowered.com/appreviews/730?json=1
 class HomeFragment : Fragment() {
 
-    private lateinit var auth: FirebaseAuth
     private lateinit var navController: NavController
 
     override fun onCreateView(
@@ -26,7 +25,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        auth = Firebase.auth
         navController = Navigation.findNavController(view)
 
         val goToLikesButton = view.findViewById<View>(R.id.toolbar_like)
@@ -34,6 +32,5 @@ class HomeFragment : Fragment() {
         goToLikesButton.setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_likeFragment)
         }
-
     }
 }
