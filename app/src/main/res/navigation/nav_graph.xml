@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_homeFragment_to_whishlistFragment"
             app:destination="@id/whishlistFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/likeFragment"
@@ -66,4 +69,13 @@
         android:name="fr.esgi.games.WhishlistFragment"
         android:label="fragment_whishlist"
         tools:layout="@layout/fragment_whishlist" />
+    <fragment
+        android:id="@+id/gameDetailsFragment"
+        android:name="fr.esgi.games.GameDetailsFragment"
+        android:label="fragment_game_details"
+        tools:layout="@layout/fragment_game_details" >
+        <action
+            android:id="@+id/action_gameDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

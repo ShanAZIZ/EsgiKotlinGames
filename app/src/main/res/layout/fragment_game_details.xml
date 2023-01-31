@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".GameDetails">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/game_details_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:elevation="10dp"
+            android:background="@color/background_color"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:paddingTop="10dp"
+                android:layout_height="match_parent">
+                <View
+                    android:id="@+id/toolbar_cross"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    app:layout_constraintEnd_toStartOf="@+id/toolbar_title"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/back"/>
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/toolbar_cross"
+                    android:fontFamily="@font/google_sans_bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:text="@string/game_details"/>
+
+                <View
+                    android:id="@+id/toolbar_like"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="5dp"
+
+                    android:layout_marginEnd="25dp"
+                    app:layout_constraintEnd_toStartOf="@+id/toolbar_whishlist"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/like"/>
+                <View
+                    android:id="@+id/toolbar_whishlist"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="15dp"
+                    android:layout_width="25dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/whishlist"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <View
+            android:id="@+id/game_details_background"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            app:layout_constraintTop_toBottomOf="@+id/game_details_toolbar"
+            android:background="@color/background_color"
+            />
+
+        <View
+            android:id="@+id/game_card"
+            android:layout_width="380dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="center"
+            />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toBottomOf="@id/game_details_background"
+            android:layout_marginTop="50dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

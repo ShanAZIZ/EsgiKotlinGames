@@ -43,4 +43,15 @@
     <string name="no_likes_message">Vous n\'avez pas encore liker de contenu.</string>
     <string name="click_message">Cliquez sur le coeur pour en rajouter.</string>
     <!-- LIKE ACTIVITY -->
+
+    <!-- WISH ACTIVITY -->
+    <string name="wishlist">Ma liste de souhaits</string>
+    <string name="no_wish_message">Vous n\'avez pas encore ajouter de contenu.</string>
+    <string name="click_wish_message">Cliquez sur l\'étoile pour en rajouter.</string>
+    <!-- WISH ACTIVITY -->
+
+    <!-- GAME DETAILS -->
+    <string name="game_details"> Détails du jeu</string>
+    <!-- GAME DETAILS -->
+
 </resources>
