@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".home.HomeFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -131,7 +131,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/game_list"
             android:divider="@android:color/transparent"
             android:layout_width="match_parent"

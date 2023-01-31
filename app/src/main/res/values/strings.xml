@@ -44,6 +44,11 @@
     <string name="click_message">Click on the heart to add more.</string>
     <!-- LIKE ACTIVITY -->
 
+    <!-- GAME CARD -->
+    <string name="price">Price : </string>
+    <!-- GAME CARD -->
+
+
     <!-- WISH ACTIVITY -->
     <string name="wishlist">Wishlist</string>
     <string name="no_wish_message">You haven\'t add any content in your wish list.</string>
@@ -52,8 +57,6 @@
 
     <!-- GAME DETAILS -->
     <string name="game_details"> Game details</string>
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- GAME DETAILS -->
 
 </resources>

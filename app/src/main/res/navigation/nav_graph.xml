@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
-        android:name="fr.esgi.games.HomeFragment"
+        android:name="fr.esgi.games.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/likeFragment"
-        android:name="fr.esgi.games.LikeFragment"
+        android:name="fr.esgi.games.home.LikeFragment"
         android:label="fragment_like"
         tools:layout="@layout/fragment_like" >
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/whishlistFragment"
-        android:name="fr.esgi.games.WhishlistFragment"
+        android:name="fr.esgi.games.home.WhishlistFragment"
         android:label="fragment_whishlist"
         tools:layout="@layout/fragment_whishlist" />
     <fragment
