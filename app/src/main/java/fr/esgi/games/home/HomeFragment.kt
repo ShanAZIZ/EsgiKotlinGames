@@ -1,15 +1,22 @@
-package fr.esgi.games
+package fr.esgi.games.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import fr.esgi.games.R
+import fr.esgi.games.service.GameApiService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 // TODO retrieve all datas - steam API
-// https://store.steampowered.com/api/appdetails?appids=730&l=french
-// https://api.steampowered.com/ISteamChartsService/GetMostPlayedGames/v1/
 // https://store.steampowered.com/appreviews/730?json=1
 class HomeFragment : Fragment() {
 
@@ -27,10 +34,19 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
-        val goToLikesButton = view.findViewById<View>(R.id.toolbar_like)
-
-        goToLikesButton.setOnClickListener {
+        view.findViewById<View>(R.id.toolbar_like).setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_likeFragment)
+        }
+        view.findViewById<View>(R.id.toolbar_whishlist)
+        val recyclerView =view.findViewById<RecyclerView>(R.id.game_list)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            val ids = GameApiService.fetchGameIds()
+            withContext(Dispatchers.Main) {
+                val adapter = GameRecyclerAdapter(ids)
+                recyclerView.adapter = adapter
+                recyclerView.layoutManager = LinearLayoutManager(context)
+            }
         }
     }
 }
