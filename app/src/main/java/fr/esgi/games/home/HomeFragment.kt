@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.esgi.games.R
+import fr.esgi.games.model.GameDetail
 import fr.esgi.games.service.GameApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -18,7 +20,7 @@ import kotlinx.coroutines.withContext
 
 // TODO retrieve all datas - steam API
 // https://store.steampowered.com/appreviews/730?json=1
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(){
 
     private lateinit var navController: NavController
 
@@ -26,7 +28,6 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -37,13 +38,23 @@ class HomeFragment : Fragment() {
         view.findViewById<View>(R.id.toolbar_like).setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_likeFragment)
         }
-        view.findViewById<View>(R.id.toolbar_whishlist)
+        view.findViewById<View>(R.id.toolbar_whishlist).setOnClickListener {
+            navController.navigate(R.id.action_homeFragment_to_whishlistFragment)
+        }
+        view.findViewById<EditText>(R.id.search_bar).setOnClickListener {
+            navController.navigate(R.id.action_homeFragment_to_searchFragment)
+        }
+
         val recyclerView =view.findViewById<RecyclerView>(R.id.game_list)
 
         GlobalScope.launch(Dispatchers.IO) {
             val ids = GameApiService.fetchGameIds()
             withContext(Dispatchers.Main) {
-                val adapter = GameRecyclerAdapter(ids)
+                val adapter = GameRecyclerAdapter(ids, object: CustomOnClickListener<GameDetail> {
+                    override fun onClick(item: GameDetail) {
+                        navController.navigate(R.id.action_homeFragment_to_gameDetailsFragment)
+                    }
+                })
                 recyclerView.adapter = adapter
                 recyclerView.layoutManager = LinearLayoutManager(context)
             }

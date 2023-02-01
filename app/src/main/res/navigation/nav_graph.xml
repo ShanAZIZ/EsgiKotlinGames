@@ -54,28 +54,50 @@
         <action
             android:id="@+id/action_homeFragment_to_gameDetailsFragment"
             app:destination="@id/gameDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/likeFragment"
-        android:name="fr.esgi.games.home.LikeFragment"
+        android:name="fr.esgi.games.home.like.LikeFragment"
         android:label="fragment_like"
         tools:layout="@layout/fragment_like" >
         <action
             android:id="@+id/action_likeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_likeFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/whishlistFragment"
-        android:name="fr.esgi.games.home.WhishlistFragment"
+        android:name="fr.esgi.games.home.whishlist.WhishlistFragment"
         android:label="fragment_whishlist"
-        tools:layout="@layout/fragment_whishlist" />
+        tools:layout="@layout/fragment_whishlist" >
+        <action
+            android:id="@+id/action_whishlistFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_whishlistFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gameDetailsFragment"
-        android:name="fr.esgi.games.GameDetailsFragment"
+        android:name="fr.esgi.games.home.detail.GameDetailsFragment"
         android:label="fragment_game_details"
         tools:layout="@layout/fragment_game_details" >
         <action
             android:id="@+id/action_gameDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="fr.esgi.games.home.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

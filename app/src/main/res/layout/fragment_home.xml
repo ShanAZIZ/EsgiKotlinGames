@@ -56,29 +56,40 @@
         </androidx.appcompat.widget.Toolbar>
 
 
-        <androidx.appcompat.widget.SearchView
+        <EditText
             android:id="@+id/search_bar"
-            android:layoutDirection="rtl"
             app:layout_constraintTop_toBottomOf="@+id/home_toolbar"
             android:layout_marginTop="20dp"
-            app:queryHint="@string/search_message"
+            android:drawableEnd="@drawable/search"
+            android:paddingStart="20dp"
+            android:paddingEnd="10dp"
+            android:hint="@string/search_message"
             android:layout_marginHorizontal="20dp"
+            android:textColorHint="@color/white"
+            android:focusable="false"
             android:fontFamily="@font/google_sans_regular"
             android:textSize="15sp"
-            app:searchIcon="@drawable/search"
             android:background="@drawable/input_field_background"
             android:layout_width="match_parent"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"
+            android:autofillHints="name"
+            android:inputType="text" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/big_game"
             android:layout_width="match_parent"
-            android:background="@drawable/bg_placeholder"
             android:layout_height="200dp"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/text_grey"
             android:backgroundTintMode="multiply"
             app:layout_constraintTop_toBottomOf="@+id/search_bar">
+            <ImageView
+                android:id="@+id/bg_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_placeholder"
+                android:backgroundTint="@color/background_color"
+                android:backgroundTintMode="multiply" />
             <TextView
                 android:id="@+id/big_game_title"
                 android:layout_width="wrap_content"
