@@ -34,12 +34,15 @@ class ForgotPasswordFragment : Fragment() {
 
         val email = view.findViewById<EditText>(R.id.email_edit_text)
         val passwordResetButton = view.findViewById<Button>(R.id.password_forgot_btn)
+        val loading = view.findViewById<View>(R.id.loading)
 
         passwordResetButton.setOnClickListener {
             if (email.text.toString().isEmpty()) {
                 Toast.makeText(context, R.string.forgot_password_empty_email, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+            passwordResetButton.visibility= View.INVISIBLE
+            loading.visibility = View.VISIBLE
             auth.sendPasswordResetEmail(email.text.toString())
                 .addOnCompleteListener { task ->
                     if(task.isSuccessful) {
@@ -47,6 +50,8 @@ class ForgotPasswordFragment : Fragment() {
                         email.text.clear()
                         return@addOnCompleteListener
                     }
+                    passwordResetButton.visibility= View.VISIBLE
+                    loading.visibility = View.INVISIBLE
                     Toast.makeText(context, R.string.forgot_error_message, Toast.LENGTH_SHORT).show()
                 }
         }
