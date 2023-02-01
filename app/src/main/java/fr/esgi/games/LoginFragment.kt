@@ -43,15 +43,19 @@ class LoginFragment : Fragment() {
         val loginButton = view.findViewById<Button>(R.id.login_btn)
         val registerButton = view.findViewById<Button>(R.id.register_btn)
         val forgotPassword = view.findViewById<TextView>(R.id.password_forgot)
+        val loading = view.findViewById<View>(R.id.loading)
 
         // Login button on click
         loginButton.setOnClickListener {
+
             // Check if not empty
             if (email.text.toString().isEmpty() || password.text.toString().isEmpty()) {
                 Toast.makeText(context, R.string.login_empty_string_error_message, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-           signIn(email, password)
+            loginButton.visibility= View.INVISIBLE
+            loading.visibility = View.VISIBLE
+            signIn(email, password, loading, loginButton)
         }
 
         // Go to register button on click
@@ -64,7 +68,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun signIn(email :EditText, password: EditText) {
+    private fun signIn(email :EditText, password: EditText, loading : View, loginButton: Button) {
         auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener(context as Activity) { task ->
                 if (task.isSuccessful) {
@@ -74,6 +78,9 @@ class LoginFragment : Fragment() {
                 } else {
                     Toast.makeText(context, R.string.login_failed_message,
                         Toast.LENGTH_SHORT).show()
+                    loading.visibility= View.INVISIBLE
+                    loginButton.visibility= View.VISIBLE;
+
                 }
             }
     }
