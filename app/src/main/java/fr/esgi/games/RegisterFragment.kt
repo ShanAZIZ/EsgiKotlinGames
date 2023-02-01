@@ -32,7 +32,8 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val loading = view.findViewById<View>(R.id.loading)
+        val register = view.findViewById<Button>(R.id.register_btn)
         val username = view.findViewById<EditText>(R.id.username_edit_text)
         val email = view.findViewById<EditText>(R.id.email_edit_text)
         val password = view.findViewById<EditText>(R.id.password_edit_text)
@@ -44,13 +45,13 @@ class RegisterFragment : Fragment() {
         val registerButton = view.findViewById<Button>(R.id.register_btn)
 
         registerButton.setOnClickListener {
-
             if (
                 email.text.toString().isEmpty() ||
                 username.text.toString().isEmpty() ||
                 password.text.toString().isEmpty())
             {
                 Toast.makeText(context, R.string.register_empty_string_error_message, Toast.LENGTH_SHORT).show()
+
                 return@setOnClickListener
             }
 
@@ -59,11 +60,13 @@ class RegisterFragment : Fragment() {
                 confirmPassword.text.clear()
                 return@setOnClickListener
             }
-            register(email, password, username)
+            loading.visibility = View.VISIBLE
+            register.visibility = View.INVISIBLE
+            register(email, password, username, loading, registerButton)
         }
     }
 
-    private fun register(email: EditText, password: EditText, username: EditText) {
+    private fun register(email: EditText, password: EditText, username: EditText, loading : View, registerButton: Button) {
         auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
             .addOnCompleteListener(context as Activity) { task ->
                 if (task.isSuccessful) {
@@ -76,6 +79,8 @@ class RegisterFragment : Fragment() {
                         context, R.string.login_failed_message,
                         Toast.LENGTH_SHORT
                     ).show()
+                    loading.visibility = View.INVISIBLE
+                    registerButton.visibility = View.VISIBLE
                 }
             }
     }
