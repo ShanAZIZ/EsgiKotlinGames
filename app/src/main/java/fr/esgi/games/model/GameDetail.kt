@@ -13,7 +13,7 @@ data class GameDetail(
     ) {
 
     fun getSmallImage(): Uri? {
-        val url =  String.format("https://cdn.origin.steamstatic.com/steam/apps/%s/library_600x900.jpg?t=1673331963", appId.toString())
-        return url.toUri().buildUpon().scheme("https").build()
+        val url =  String.format("http://cdn.origin.steamstatic.com/steam/apps/%s/library_600x900.jpg?t=1673331963", appId.toString())
+        return url.toUri().buildUpon().scheme("http").build()
     }
 }
