@@ -102,5 +102,8 @@
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_gameDetailsFragment"
+            app:destination="@id/gameDetailsFragment" />
     </fragment>
 </navigation>

@@ -14,6 +14,9 @@ interface GameApiQueries {
 
     @GET("/details")
     fun fetchGameDetail(@Query("appId") appId: Int): Deferred<GameDetail>
+
+    @GET("/search")
+    fun fetchGameSearch(@Query("text") text: String): Deferred<ArrayList<Int>>
 }
 
 object GameApiService {
@@ -35,6 +38,14 @@ object GameApiService {
     suspend fun fetchGameDetail(appId: Int): GameDetail? {
         return try {
             api.fetchGameDetail(appId).await()
+        } catch (e: Exception){
+            null
+        }
+    }
+
+    suspend fun fetchGameSearch(text: String): ArrayList<Int>? {
+        return try {
+            api.fetchGameSearch(text).await()
         } catch (e: Exception){
             null
         }

@@ -67,7 +67,7 @@
             android:inputType="text" />
 
         <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/wishlist"
+                android:id="@+id/game_list"
                 android:divider="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
