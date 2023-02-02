@@ -11,7 +11,6 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.esgi.games.R
-import fr.esgi.games.model.GameDetail
 import fr.esgi.games.service.GameApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -49,15 +48,22 @@ class HomeFragment : Fragment(){
 
         GlobalScope.launch(Dispatchers.IO) {
             val ids = GameApiService.fetchGameIds()
-            withContext(Dispatchers.Main) {
-                val adapter = GameRecyclerAdapter(ids, object: CustomOnClickListener<GameDetail> {
-                    override fun onClick(item: GameDetail) {
-                        navController.navigate(R.id.action_homeFragment_to_gameDetailsFragment)
-                    }
-                })
-                recyclerView.adapter = adapter
-                recyclerView.layoutManager = LinearLayoutManager(context)
+            if(ids != null) {
+                withContext(Dispatchers.Main) {
+                    val adapter = GameRecyclerAdapter(
+                        ids,
+                        object : CustomOnClickListener<Int> {
+                            override fun onClick(item: Int) {
+                                val action = HomeFragmentDirections.actionHomeFragmentToGameDetailsFragment(item)
+                                navController.navigate(action)
+                            }
+                        },
+                    )
+                    recyclerView.adapter = adapter
+                    recyclerView.layoutManager = LinearLayoutManager(context)
+                }
             }
+            // TODO: else
         }
     }
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import fr.esgi.games.R
 
 class GameDetailsFragment : Fragment() {
@@ -23,8 +24,17 @@ class GameDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         navController = Navigation.findNavController(view)
+        val args: GameDetailsFragmentArgs by navArgs()
+
         view.findViewById<View>(R.id.toolbar_cross).setOnClickListener {
             navController.popBackStack()
         }
+
+        // TODO: init is in whishlist and is in liked
+        // TODO: add to like / remove
+        // TODO: add to whishlist / remove
+        // TODO: retrieve game info
+        // TODO: description / avis
+
     }
 }
