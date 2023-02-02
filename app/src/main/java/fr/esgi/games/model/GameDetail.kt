@@ -21,4 +21,9 @@ data class GameDetail(
         val url = String.format("https://cdn.akamai.steamstatic.com/steam/apps/%s/page_bg_generated.jpg?t=1668125812", appId.toString())
         return url.toUri().buildUpon().scheme("https").build()
     }
+
+    // TODO ONCLICK SUR DETAILS
+
+
+
 }
