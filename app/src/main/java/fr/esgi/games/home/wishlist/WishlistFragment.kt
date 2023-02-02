@@ -15,16 +15,13 @@ import com.google.firebase.ktx.Firebase
 import fr.esgi.games.R
 import fr.esgi.games.home.CustomOnClickListener
 import fr.esgi.games.home.GameRecyclerAdapter
-import fr.esgi.games.service.firebaseWishlistService
+import fr.esgi.games.service.FirebaseWishlistService
 
 class WishlistFragment : Fragment() {
 
     private lateinit var navController: NavController
-    private lateinit var firebaseWishlistService: firebaseWishlistService
+    private lateinit var firebaseWishlistService: FirebaseWishlistService
     private lateinit var auth: FirebaseAuth
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +36,7 @@ class WishlistFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         auth = Firebase.auth
         navController = Navigation.findNavController(view)
-        firebaseWishlistService = firebaseWishlistService()
+        firebaseWishlistService = FirebaseWishlistService()
 
         val exitButton = view.findViewById<View>(R.id.toolbar_cross)
         val recyclerView =view.findViewById<RecyclerView>(R.id.wishlist)

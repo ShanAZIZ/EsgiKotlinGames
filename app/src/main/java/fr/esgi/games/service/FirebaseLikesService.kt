@@ -1,6 +1,7 @@
 package fr.esgi.games.service
 
 import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -37,4 +38,25 @@ class FirebaseLikesService {
             }
     }
 
+    fun addToLikes(userId: String, item: Int,  callback: (Boolean) -> Unit) {
+        db.collection(documentName).document(userId).update("liked", FieldValue.arrayUnion(item))
+            .addOnSuccessListener{
+                callback(true)
+            }
+            .addOnFailureListener {
+                callback(false)
+                throw it
+            }
+    }
+
+    fun removeFromLikes(userId: String, item: Int,  callback: (Boolean) -> Unit) {
+        db.collection(documentName).document(userId).update("liked", FieldValue.arrayRemove(item))
+            .addOnSuccessListener{
+                callback(true)
+            }
+            .addOnFailureListener {
+                callback(false)
+                throw it
+            }
+    }
 }

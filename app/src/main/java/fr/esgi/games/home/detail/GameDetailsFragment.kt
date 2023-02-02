@@ -17,6 +17,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import fr.esgi.games.R
 import fr.esgi.games.service.FirebaseLikesService
+import fr.esgi.games.service.FirebaseWishlistService
 import fr.esgi.games.service.GameApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -27,8 +28,10 @@ class GameDetailsFragment : Fragment() {
 
     private lateinit var navController: NavController
     private lateinit var firebaseLikesService: FirebaseLikesService
+    private lateinit var firebaseWishlistService: FirebaseWishlistService
     private lateinit var auth: FirebaseAuth
-    private var isLiked = false
+    private var liked = false
+    private var wished = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,23 +44,36 @@ class GameDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         navController = Navigation.findNavController(view)
         firebaseLikesService = FirebaseLikesService()
+        firebaseWishlistService = FirebaseWishlistService()
         auth = Firebase.auth
         val args: GameDetailsFragmentArgs by navArgs()
 
         val like = view.findViewById<View>(R.id.toolbar_like)
+        val wishV = view.findViewById<View>(R.id.toolbar_whishlist)
 
-        //isLiked(args.appId, like)
+        isLiked(args.appId, like)
+        isWished(args.appId, wishV)
 
         view.findViewById<View>(R.id.toolbar_cross).setOnClickListener {
             navController.popBackStack()
         }
 
         like.setOnClickListener {
-            if(isLiked) {
-                // TODO: dislike
+            if(liked) {
+                dislike(args.appId, like)
             }
             else {
-                // TODO: like
+                like(args.appId, like)
+
+            }
+        }
+
+        wishV.setOnClickListener {
+            if (wished){
+                diswish(args.appId, wishV)
+            }
+            else {
+                wish(args.appId, wishV)
             }
         }
 
@@ -77,22 +93,68 @@ class GameDetailsFragment : Fragment() {
             }
         }
 
-        // TODO: init is in whishlist and is in liked
         // TODO: add to like / remove
         // TODO: add to whishlist / remove
-        // TODO: retrieve game info
         // TODO: description / avis
     }
 
-    /*private fun isLiked(id: Int, like: View) {
-        println(id)
+    private fun isLiked(id: Int, like: View) {
         val uid = auth.currentUser?.uid ?: return
-        firebaseLikesService.isInLikes(uid, id) { liked ->
-            println(liked)
-            if(liked) {
+        firebaseLikesService.isInLikes(uid, id) { l ->
+            if(l) {
                 like.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.like_full) }
-                isLiked = true
+                liked = true
             }
         }
-    }*/
+    }
+
+    private fun isWished(id: Int, wish: View) {
+        val uid = auth.currentUser?.uid ?: return
+        firebaseWishlistService.isInWished(uid, id) { w ->
+            if(w) {
+                wish.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.whishlist_full) }
+                wished = true
+            }
+        }
+    }
+
+    private fun dislike(id: Int, like: View) {
+        val uid = auth.currentUser?.uid ?: return
+        firebaseLikesService.removeFromLikes(uid, id) {
+            if(it) {
+                like.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.like) }
+                liked = false
+            }
+        }
+    }
+
+    private fun like(id: Int, like: View) {
+        val uid = auth.currentUser?.uid ?: return
+        firebaseLikesService.addToLikes(uid, id) {
+            if(it) {
+                like.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.like_full) }
+                liked = true
+            }
+        }
+    }
+
+    private fun diswish(id: Int, wish: View) {
+        val uid = auth.currentUser?.uid ?: return
+        firebaseWishlistService.removeFromWishlist(uid, id) {
+            if(it) {
+                wish.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.whishlist) }
+                wished = false
+            }
+        }
+    }
+
+    private fun wish(id: Int, wish: View) {
+        val uid = auth.currentUser?.uid ?: return
+        firebaseWishlistService.addToWishlist(uid, id) {
+            if(it) {
+                wish.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.whishlist_full) }
+                wished = true
+            }
+        }
+    }
 }
