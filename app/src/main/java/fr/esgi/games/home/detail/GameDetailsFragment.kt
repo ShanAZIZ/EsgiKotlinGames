@@ -46,7 +46,7 @@ class GameDetailsFragment : Fragment() {
 
         val like = view.findViewById<View>(R.id.toolbar_like)
 
-        isLiked(args.appId, like)
+        //isLiked(args.appId, like)
 
         view.findViewById<View>(R.id.toolbar_cross).setOnClickListener {
             navController.popBackStack()
@@ -84,7 +84,7 @@ class GameDetailsFragment : Fragment() {
         // TODO: description / avis
     }
 
-    private fun isLiked(id: Int, like: View) {
+    /*private fun isLiked(id: Int, like: View) {
         println(id)
         val uid = auth.currentUser?.uid ?: return
         firebaseLikesService.isInLikes(uid, id) { liked ->
@@ -94,5 +94,5 @@ class GameDetailsFragment : Fragment() {
                 isLiked = true
             }
         }
-    }
+    }*/
 }

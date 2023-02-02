@@ -49,8 +49,8 @@
             android:id="@+id/action_homeFragment_to_likeFragment"
             app:destination="@id/likeFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_whishlistFragment"
-            app:destination="@id/whishlistFragment" />
+            android:id="@+id/action_homeFragment_to_wishlistFragment"
+            app:destination="@id/wishlistFragment" />
         <action
             android:id="@+id/action_homeFragment_to_gameDetailsFragment"
             app:destination="@id/gameDetailsFragment" />
@@ -71,15 +71,15 @@
             app:destination="@id/gameDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/whishlistFragment"
-        android:name="fr.esgi.games.home.whishlist.WhishlistFragment"
-        android:label="fragment_whishlist"
-        tools:layout="@layout/fragment_whishlist" >
+        android:id="@+id/wishlistFragment"
+        android:name="fr.esgi.games.home.wishlist.WishlistFragment"
+        android:label="fragment_wishlist"
+        tools:layout="@layout/fragment_wishlist" >
         <action
-            android:id="@+id/action_whishlistFragment_to_homeFragment"
+            android:id="@+id/action_wishlistFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_whishlistFragment_to_gameDetailsFragment"
+            android:id="@+id/action_wishlistFragment_to_gameDetailsFragment"
             app:destination="@id/gameDetailsFragment" />
     </fragment>
     <fragment

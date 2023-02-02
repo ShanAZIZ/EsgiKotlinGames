@@ -38,7 +38,7 @@ class HomeFragment : Fragment(){
             navController.navigate(R.id.action_homeFragment_to_likeFragment)
         }
         view.findViewById<View>(R.id.toolbar_whishlist).setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_whishlistFragment)
+            navController.navigate(R.id.action_homeFragment_to_wishlistFragment)
         }
         view.findViewById<EditText>(R.id.search_bar).setOnClickListener {
             navController.navigate(R.id.action_homeFragment_to_searchFragment)
