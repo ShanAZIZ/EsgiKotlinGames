@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface GameApiQueries {
     @GET("/games")
-    fun fetchGameIds(): Deferred<List<Int>>
+    fun fetchGameIds(): Deferred<ArrayList<Int>>
 
     @GET("/details")
     fun fetchGameDetail(@Query("appId") appId: Int): Deferred<GameDetail>
@@ -24,11 +24,19 @@ object GameApiService {
         .build()
         .create(GameApiQueries::class.java)
 
-    suspend fun fetchGameIds(): List<Int> {
-        return api.fetchGameIds().await()
+    suspend fun fetchGameIds(): ArrayList<Int>? {
+        return try {
+            api.fetchGameIds().await()
+        } catch (e: Exception){
+            null
+        }
     }
 
-    suspend fun fetchGameDetail(appId: Int): GameDetail {
-        return api.fetchGameDetail(appId).await()
+    suspend fun fetchGameDetail(appId: Int): GameDetail? {
+        return try {
+            api.fetchGameDetail(appId).await()
+        } catch (e: Exception){
+            null
+        }
     }
 }
