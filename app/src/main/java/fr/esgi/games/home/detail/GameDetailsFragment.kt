@@ -28,6 +28,7 @@ class GameDetailsFragment : Fragment() {
     private lateinit var navController: NavController
     private lateinit var firebaseLikesService: FirebaseLikesService
     private lateinit var auth: FirebaseAuth
+    private var isLiked = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +50,15 @@ class GameDetailsFragment : Fragment() {
 
         view.findViewById<View>(R.id.toolbar_cross).setOnClickListener {
             navController.popBackStack()
+        }
+
+        like.setOnClickListener {
+            if(isLiked) {
+                // TODO: dislike
+            }
+            else {
+                // TODO: like
+            }
         }
 
         GlobalScope.launch(Dispatchers.IO) {
@@ -77,9 +87,11 @@ class GameDetailsFragment : Fragment() {
     private fun isLiked(id: Int, like: View) {
         println(id)
         val uid = auth.currentUser?.uid ?: return
-        firebaseLikesService.isInLikes(uid, id) {
-            if(it) {
+        firebaseLikesService.isInLikes(uid, id) { liked ->
+            println(liked)
+            if(liked) {
                 like.background = context?.let { it1 -> ContextCompat.getDrawable(it1, R.drawable.like_full) }
+                isLiked = true
             }
         }
     }

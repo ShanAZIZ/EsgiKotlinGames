@@ -27,6 +27,15 @@ class FirebaseLikesService {
             }
     }
 
+    fun isInLikes(userId: String, item: Int, callback: (Boolean) -> Unit) {
+        db.collection(documentName).document(userId)
+            .get()
+            .addOnSuccessListener { documentSnapshot ->
+                val intList = convertArrayList(documentSnapshot.get("liked") as ArrayList<*>)
+                callback(intList.contains(item))
+            }
+    }
+
     private fun convertArrayList(arrayList: ArrayList<*>): ArrayList<Int> {
         val intArrayList = ArrayList<Int>()
         for (item in arrayList) {
