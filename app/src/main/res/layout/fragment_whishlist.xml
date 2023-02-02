@@ -47,6 +47,15 @@
                     android:text="@string/wishlist"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wishlist"
+            android:divider="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color"
+            app:layout_constraintTop_toBottomOf="@+id/whishlist_toolbar"
+            tools:listitem="@layout/game_card"
+            android:visibility="gone"/>
 
         <View
             android:id="@+id/whishlist_bg_svg"
@@ -60,7 +69,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             />
         <TextView
-            android:id="@+id/no_likes"
+            android:id="@+id/no_wish"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/whishlist_bg_svg"
             android:gravity="center_horizontal"
@@ -72,7 +81,7 @@
         <TextView
             android:id="@+id/click"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/no_likes"
+            app:layout_constraintTop_toBottomOf="@+id/no_wish"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
             android:fontFamily="@font/google_sans_regular"

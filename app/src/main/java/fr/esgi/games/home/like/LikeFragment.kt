@@ -7,15 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import fr.esgi.games.R
+import fr.esgi.games.home.CustomOnClickListener
+import fr.esgi.games.home.GameRecyclerAdapter
+import fr.esgi.games.model.GameDetail
 
 class LikeFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var navController: NavController
+    private var gameIds = listOf<Int>(730)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +38,28 @@ class LikeFragment : Fragment() {
         navController = Navigation.findNavController(view)
 
         val exitButton = view.findViewById<View>(R.id.toolbar_cross)
+        val recyclerView =view.findViewById<RecyclerView>(R.id.like_list)
 
         exitButton.setOnClickListener {
             navController.navigate(R.id.action_likeFragment_to_homeFragment)
         }
+        if(gameIds.isEmpty()){
+            view.findViewById<View>(R.id.no_likes).visibility = View.VISIBLE
+        }
+        else{
+            recyclerView.visibility = View.VISIBLE
+            view.findViewById<View>(R.id.no_likes).visibility = View.GONE
+            view.findViewById<View>(R.id.click).visibility = View.GONE
+            view.findViewById<View>(R.id.likes_bg_svg).visibility = View.GONE
+
+        }
+        val adapter = GameRecyclerAdapter(gameIds, object: CustomOnClickListener<GameDetail> {
+            override fun onClick(item: GameDetail) {
+                navController.navigate(R.id.action_likeFragment_to_gameDetailsFragment)
+            }
+        })
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
     }
 
 

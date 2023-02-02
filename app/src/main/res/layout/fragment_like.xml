@@ -48,6 +48,16 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/like_list"
+            android:divider="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color"
+            app:layout_constraintTop_toBottomOf="@+id/like_toolbar"
+            tools:listitem="@layout/game_card"
+            android:visibility="gone"/>
+
         <View
             android:id="@+id/likes_bg_svg"
             android:layout_width="150dp"
