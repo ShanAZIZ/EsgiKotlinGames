@@ -67,7 +67,7 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <View
+        <ImageView
             android:id="@+id/game_details_background"
             android:layout_width="match_parent"
             android:layout_height="350dp"
@@ -75,16 +75,58 @@
             android:background="@color/background_color"
             />
 
-        <View
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/game_card"
+            android:backgroundTint="@color/text_grey"
+            android:backgroundTintMode="multiply"
             android:layout_width="380dp"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tab_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/card_bg_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            <ImageView
+                android:id="@+id/card_image"
+                android:layout_margin="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="80dp"
+                android:layout_height="90dp"
+                />
+            <LinearLayout
+                app:layout_constraintStart_toEndOf="@+id/card_image"
+                android:layout_marginStart="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/game_title"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="GAME TITLE"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/google_sans_regular"
+                    />
+                <TextView
+                    android:id="@+id/game_editor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editeur"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/google_sans_regular"
+                    />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
