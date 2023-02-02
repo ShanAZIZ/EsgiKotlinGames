@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import fr.esgi.games.R
 import fr.esgi.games.home.CustomOnClickListener
 import fr.esgi.games.home.GameRecyclerAdapter
-import fr.esgi.games.model.GameDetail
 
 class WhishlistFragment : Fragment() {
 
     private lateinit var navController: NavController
-    private var gameIds = listOf<Int>(730,730)
+    private var gameIds : ArrayList<Int> = ArrayList(730)
+
 
 
     override fun onCreateView(
@@ -51,8 +51,8 @@ class WhishlistFragment : Fragment() {
             view.findViewById<View>(R.id.whishlist_bg_svg).visibility = View.GONE
 
         }
-        val adapter = GameRecyclerAdapter(gameIds, object: CustomOnClickListener<GameDetail> {
-            override fun onClick(item: GameDetail) {
+        val adapter = GameRecyclerAdapter(gameIds, object: CustomOnClickListener<Int> {
+            override fun onClick(item: Int) {
                 navController.navigate(R.id.action_whishlistFragment_to_gameDetailsFragment)
             }
         })

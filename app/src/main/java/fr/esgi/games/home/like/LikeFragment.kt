@@ -15,13 +15,12 @@ import com.google.firebase.ktx.Firebase
 import fr.esgi.games.R
 import fr.esgi.games.home.CustomOnClickListener
 import fr.esgi.games.home.GameRecyclerAdapter
-import fr.esgi.games.model.GameDetail
 
 class LikeFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var navController: NavController
-    private var gameIds = listOf<Int>(730)
+    private var gameIds : ArrayList<Int> = ArrayList(730)
 
 
     override fun onCreateView(
@@ -53,8 +52,8 @@ class LikeFragment : Fragment() {
             view.findViewById<View>(R.id.likes_bg_svg).visibility = View.GONE
 
         }
-        val adapter = GameRecyclerAdapter(gameIds, object: CustomOnClickListener<GameDetail> {
-            override fun onClick(item: GameDetail) {
+        val adapter = GameRecyclerAdapter(gameIds, object: CustomOnClickListener<Int> {
+            override fun onClick(item: Int) {
                 navController.navigate(R.id.action_likeFragment_to_gameDetailsFragment)
             }
         })
